@@ -2,10 +2,6 @@ const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongodb').ObjectId;
 
-// router.get('/departments', (req, res) => {
-//   res.json(db.departments);
-// });
-
 router.get('/departments', (req, res) => {
   req.db
     .collection('departments')
@@ -15,10 +11,6 @@ router.get('/departments', (req, res) => {
       else res.json(data);
     });
 });
-
-// router.get('/departments/random', (req, res) => {
-//   res.json(db.departments[Math.floor(Math.random() * db.length)]);
-// });
 
 router.get('/departments/random', (req, res) => {
   req.db
@@ -30,10 +22,6 @@ router.get('/departments/random', (req, res) => {
     });
 });
 
-// router.get('/departments/:id', (req, res) => {
-//   res.json(db.departments.find(item => item.id == req.params.id));
-// });
-
 router.get('/departments/:id', (req, res) => {
   req.db
     .collection('departments')
@@ -44,12 +32,6 @@ router.get('/departments/:id', (req, res) => {
     });
 });
 
-// router.post('/departments', (req, res) => {
-//   const { name } = req.body;
-//   db.departments.push({ id: 3, name });
-//   res.json({ message: 'OK' });
-// });
-
 router.post('/departments', (req, res) => {
   const { name } = req.body;
   req.db.collection('departments').insertOne({ name: name }, (err) => {
@@ -57,14 +39,6 @@ router.post('/departments', (req, res) => {
     else res.json({ message: 'OK' });
   });
 });
-
-// router.put('/departments/:id', (req, res) => {
-//   const { name } = req.body;
-//   db = db.departments.map((item) =>
-//     item.id == req.params.id ? { ...item, name } : item
-//   );
-//   res.json({ message: 'OK' });
-// });
 
 router.put('/departments/:id', (req, res) => {
   const { name } = req.body;
@@ -79,11 +53,6 @@ router.put('/departments/:id', (req, res) => {
       }
     );
 });
-
-// router.delete('/departments/:id', (req, res) => {
-//   db = db.departments.filter((item) => item.id != req.params.id);
-//   res.json({ message: 'OK' });
-// });
 
 router.delete('/departments/:id', (req, res) => {
   req.db
