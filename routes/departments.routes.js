@@ -3,6 +3,10 @@ const router = express.Router();
 const db = require('./../db');
 const ObjectId = require('mongodb').ObjectId;
 
+// router.get('/departments', (req, res) => {
+//   res.json(db.departments);
+// });
+
 router.get('/departments', (req, res) => {
   req.db
     .collection('departments')
@@ -26,6 +30,10 @@ router.get('/departments/random', (req, res) => {
       else res.json(data[0]);
     });
 });
+
+// router.get('/departments/:id', (req, res) => {
+//   res.json(db.departments.find(item => item.id == req.params.id));
+// });
 
 router.get('/departments/:id', (req, res) => {
   req.db
