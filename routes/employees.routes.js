@@ -36,9 +36,9 @@ router.post('/employees', async (req, res) => {
   try {
     const { firstName, lastName, department } = req.body;
     const newEmployee = new Department({
-      firstName: firstName,
-      lastName: lastName,
-      department: department,
+      firstName,
+      lastName,
+      department,
     });
     await newEmployee.save();
     res.json({ message: 'OK' });
@@ -52,14 +52,15 @@ router.put('/employees/:id', async (req, res) => {
 
   try {
     const emp = await Employee.findById(req.params.id);
+    const { id } = req.params;
     if (emp) {
       await Employee.updateOne(
-        { _id: req.params.id },
+        { id },
         {
           $set: {
-            firstName: firstName,
-            lastName: lastName,
-            department: department,
+            firstName,
+            lastName,
+            department,
           },
         }
       );
@@ -71,10 +72,11 @@ router.put('/employees/:id', async (req, res) => {
 });
 
 router.delete('/employees/:id', async (req, res) => {
+  const { id } = req.params;
   try {
-    const emp = await Employee.findById(req.params.id);
+    const emp = await Employee.findById(id);
     if (emp) {
-      await Employee.deleteOne({ _id: req.params.id });
+      await Employee.deleteOne({ id });
       res.json({ message: 'OK' });
     } else res.status(404).json({ message: 'Not found...' });
   } catch (err) {
