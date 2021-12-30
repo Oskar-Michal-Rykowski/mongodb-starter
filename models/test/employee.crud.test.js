@@ -20,7 +20,7 @@ describe('Employee', () => {
         firstName: 'Anna',
         lastName: 'Gajda',
         department: 'Marketing',
-        salary: 1,
+        // salary: 1,
       });
       await employeeOne.save();
 
@@ -28,7 +28,7 @@ describe('Employee', () => {
         firstName: 'Mateusz',
         lastName: 'Morawiecki',
         department: 'Bankowość',
-        salary: 1,
+        // salary: 1,
       });
       await employeeTwo.save();
     });
@@ -47,7 +47,7 @@ describe('Employee', () => {
       expect(firstName.firstName).to.be.equal('Anna');
       expect(lastName.lastName).to.be.equal('Gajda');
       expect(department.department).to.be.equal('Marketing');
-      expect(salary.salary).to.be.equal(1);
+      // expect(salary.salary).to.be.equal(1);
     });
 
     after(async () => {
@@ -61,7 +61,7 @@ describe('Employee', () => {
         firstName: 'Anna',
         lastName: 'Gajda',
         department: 'Marketing',
-        salary: 1,
+        // salary: 1,
       });
       await employee.save();
       expect(employee.isNew).to.be.false;
@@ -78,7 +78,7 @@ describe('Employee', () => {
         firstName: 'Anna',
         lastName: 'Gajda',
         department: 'Marketing',
-        salary: 1,
+        // salary: 1,
       });
       await employeeOne.save();
 
@@ -86,7 +86,7 @@ describe('Employee', () => {
         firstName: 'Mateusz',
         lastName: 'Morawiecki',
         department: 'Bankowość',
-        salary: 1,
+        // salary: 1,
       });
       await employeeTwo.save();
     });
@@ -97,14 +97,14 @@ describe('Employee', () => {
           firstName: 'Anna',
           lastName: 'Gajda',
           department: 'Marketing',
-          salary: 1,
+          // salary: 1,
         },
         {
           $set: {
             firstName: '=Anna=',
             lastName: '=Gajda=',
             department: '=Marketing=',
-            salary: 2,
+            // salary: 2,
           },
         }
       );
@@ -112,7 +112,7 @@ describe('Employee', () => {
         firstName: '=Anna=',
         lastName: '=Gajda=',
         department: '=Marketing=',
-        salary: 2,
+        // salary: 2,
       });
       expect(updatedEmployee).to.not.be.null;
     });
@@ -122,19 +122,19 @@ describe('Employee', () => {
         firstName: 'Anna',
         lastName: 'Gajda',
         department: 'Marketing',
-        salary: 1,
+        // salary: 1,
       });
       employee.firstName = '=Anna=';
       employee.lastName = '=Gajda=';
       employee.department = '=Marketing=';
-      employee.salary = 2;
+      // employee.salary = 2;
       await employee.save();
 
       const updatedEmployee = await Employee.findOne({
         firstName: '=Anna=',
         lastName: '=Gajda=',
         department: '=Marketing=',
-        salary: 2,
+        // salary: 2,
       });
       expect(updatedEmployee).to.not.be.null;
     });
@@ -156,7 +156,7 @@ describe('Employee', () => {
         firstName: 'Anna',
         lastName: 'Gajda',
         department: 'Marketing',
-        salary: 1,
+        // salary: 1,
       });
       await employeeOne.save();
 
@@ -164,7 +164,7 @@ describe('Employee', () => {
         firstName: 'Mateusz',
         lastName: 'Morawiecki',
         department: 'Bankowość',
-        salary: 2,
+        // salary: 2,
       });
       await employeeTwo.save();
     });
