@@ -48,7 +48,7 @@ exports.editDoc = async (req, res) => {
   try {
     const dep = await Department.findById(id);
     if (dep) {
-      await Department.updateOne({ id }, { $set: { name } });
+      await Department.updateOne({ _id: id }, { $set: { name: name } });
       const newDep = await Department.findById(id);
       res.json(newDep);
     } else res.status(404).json({ message: 'Not found...' });
