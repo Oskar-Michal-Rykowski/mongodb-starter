@@ -1,4 +1,5 @@
 const Employee = require('../models/employee.model');
+const Department = require('../models/department.model');
 
 exports.getAll = async (req, res) => {
   try {
@@ -33,13 +34,21 @@ exports.getById = async (req, res) => {
 exports.postNew = async (req, res) => {
   try {
     const { firstName, lastName, department } = req.body;
-    const newEmployee = new Department({
-      firstName,
-      lastName,
-      department,
-    });
-    await newEmployee.save();
-    res.json({ message: 'OK' });
+
+    const departmentData = await Department.findOne({ name: department });
+    const departmentId = departmentData._id;
+
+    if (!departmentData) {
+      res.status(400).json({ message: 'No such department' });
+    } else {
+      const newEmployee = new Employee({
+        firstName,
+        lastName,
+        department: departmentId,
+      });
+      await newEmployee.save();
+      res.json({ message: 'OK' });
+    }
   } catch (err) {
     res.status(500).json({ message: err });
   }
