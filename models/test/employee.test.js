@@ -10,7 +10,7 @@ describe('Employee', () => {
       expect(err.errors.firstName).to.exist;
       expect(err.errors.lastName).to.exist;
       expect(err.errors.department).to.exist;
-      expect(err.errors.salary).to.exist;
+      // expect(err.errors.salary).to.exist;
     });
   });
   after(() => {
@@ -22,49 +22,37 @@ describe('Employee', () => {
         firstName: 'Adam',
         lastName: 'Szostak',
         department: { id: '123', name: 'PR & Marketing' },
-        salary: 1,
+        // salary: 1,
       },
       {
         firstName: 'Adam',
         lastName: 'Szostak',
         department: ['12345', 'PR & Marketing'],
-        salary: 1,
+        // salary: 1,
       },
       {
         firstName: 'Ada',
         lastName: { id: '123', lastName: 'Kowalska' },
         department: 'Jakikolwiek',
-        salary: 1,
+        // salary: 1,
       },
       {
         firstName: 'Ada',
         lastName: ['123', 'Kowalska'],
         department: 'Jakikolwiek',
-        salary: 1,
+        // salary: 1,
       },
       {
         firstName: { id: '123', lastName: 'Oskar' },
         lastName: 'Rykowski',
         department: 'Notarialny',
-        salary: 1,
+        // salary: 1,
       },
       {
         firstName: ['123', 'Oskar'],
         lastName: 'Rykowski',
         department: 'Notarialny',
-        salary: 1,
-      },
-      {
-        firstName: 'Oskar',
-        lastName: 'Rykowski',
-        department: 'Notarialny',
-        salary: { id: '123', quote: 123 },
-      },
-      {
-        firstName: 'Oskar',
-        lastName: 'Rykowski',
-        department: 'Notarialny',
-        salary: [1, 2, 3],
+        // salary: 1,
       },
     ];
     for (let arg of cases) {
@@ -82,7 +70,7 @@ describe('Employee', () => {
         firstName: 'Adam',
         lastName: 'Szostak',
         department: 'PR & Marketing',
-        salary: 7000,
+        // salary: 7000,
       },
     ];
     for (let arg of cases) {
